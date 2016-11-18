@@ -82,3 +82,7 @@ if [ ! "$INI" = "" ]; then
   echo "Integrating custom installer.ini"
   cat "$INI" > "$BPATCH/installer.ini" 
 fi
+
+# repackage iso
+echo "Repacking the ISO file"
+genisoimage -l -r -J -V "Sophos" -b "$BPATCH"/isolinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table -c "$BPATCH"isolinux/boot.cat -o "$ISOPATH"-new.iso ./
