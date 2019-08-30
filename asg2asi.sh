@@ -83,6 +83,7 @@ if [ ! "$INI" = "" ]; then
   cat "$INI" > "$BPATCH/installer.ini" 
 fi
 
+cd $CWD
 # repackage iso
 echo "Repacking the ISO file"
 genisoimage -l -r -J -V "Sophos" -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table -c isolinux/boot.cat -o "$ISOPATH"-new.iso "$BPATCH"
